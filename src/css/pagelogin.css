@@ -1,0 +1,86 @@
+.main-container {
+    display: flex;
+    width: 100%;
+    width: 100%;
+    background: #ffff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+
+}
+
+.login-screen {
+    width: 100%;
+}
+
+.user-field {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+}
+
+.login-screen {
+    background: #cfdce7;
+    border-radius: 5px;
+}
+
+label {
+    width: 20%;
+    font-size: 13px;
+    line-height: 30px;
+    text-align: end;
+    margin-right: 20px;
+}
+
+.btn-submit {
+    margin-top: 10px;
+}
+
+input {
+    display: inline-block;
+    height: 15px;
+    outline: none;
+    border: 1px solid #e5d3d3;
+    border-radius: 5px;
+    min-width: 30%;
+    vertical-align: middle;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.left-side {
+    width: 20%;
+    background-color: #cfdce7;
+}
+
+.right-side {
+    width: 80%;
+}
+
+.btn-login {
+    padding: 10px 20px;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.btn-login:hover {
+    background-color: rgb(2, 5, 8);
+    border: 1px solid #fff;
+}
+
+.btn-submit {
+    border-top-style: solid;
+    border-top-width: 1px;
+    margin-top: 10px;
+    border-top-color: #cfdce7;
+}
