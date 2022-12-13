@@ -22,6 +22,10 @@
     display: flex;
     width: 100%;
     padding: 10px;
+
+    input {
+        width: 30%;
+    }
 }
 
 .login-screen {
@@ -52,25 +56,39 @@ input {
     padding: 10px;
     background-color: #fff;
     border: 1px solid #ddd;
+    width: 100%;
 }
 
 .left-side {
     width: 20%;
     background-color: #cfdce7;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+        width: 150px;
+        border-radius: 5px;
+    }
 }
 
 .right-side {
     width: 80%;
 }
 
-.btn-login {
+.btn {
     padding: 10px 20px;
-    background-color: dodgerblue;
     border: 1px solid #ddd;
-    color: white;
     cursor: pointer;
-    margin-top: 10px;
     letter-spacing: 1px;
+}
+
+.btn-login {
+    @extend .btn;
+    margin-top: 10px;
+    background-color: dodgerblue;
+    color: white;
 }
 
 .btn-login:hover {
@@ -78,9 +96,23 @@ input {
     border: 1px solid #fff;
 }
 
-.btn-submit {
-    border-top-style: solid;
-    border-top-width: 1px;
+.btn-plain {
+    @extend .btn;
     margin-top: 10px;
-    border-top-color: #cfdce7;
+    background-color: #d1d5d9;
+    color: #563c3c;
+    // border: 1px solid #bb9e9e;
+}
+
+select {
+    display: inline-block;    
+    outline: none;
+    border: 1px solid #e5d3d3;
+    border-radius: 5px;
+    min-width: 30%;
+    vertical-align: middle;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 100%;
 }

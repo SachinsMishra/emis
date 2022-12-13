@@ -1,15 +1,16 @@
-import '../css/pagelogin.css';
+import '../css/pagelogin.scss';
 import { useNavigate } from 'react-router-dom';
+import { MENU_ROUTE } from '../shared/Shared';
 export const PageLogin = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/add-employee');
+        navigate(MENU_ROUTE.HR_MENU);
     };
     return (
         <div className="main-container">
             <div className="left-side">
-                {/* Left */}
+                <img className='logo' src='images/image.png'></img>
             </div>
             <div className="right-side">
                 <div className='container'>
