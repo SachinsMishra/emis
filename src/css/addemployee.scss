@@ -52,13 +52,23 @@
             font-size: 20px;
             background-color: white;
             padding: 5px;
-            line-height: 10px;
+            // line-height: 10px;
+            margin: -1px;
         }
-        .control,select{
+
+        .control,
+        select {
             width: 100%;
             border: 0;
             border-radius: 0px;
-            
+
         }
+
+        .search-title {
+            line-height: 30px;
+            margin-right: 20px;
+            // color: white;
+        }
+
     }
 }
