@@ -1,6 +1,7 @@
 import '../css/pagelogin.scss';
 import { useNavigate } from 'react-router-dom';
 import { MENU_ROUTE } from '../shared/Shared';
+import InspectInput from '../pages/InspectInput'
 export const PageLogin = () => {
     const navigate = useNavigate();
 
@@ -21,6 +22,8 @@ export const PageLogin = () => {
                         Sign in
                     </h4>
                     <div className='login-screen'>
+                    {/* <InspectInput></InspectInput> */}
+
                         <div className='user-field'>
                             <label> Email Address</label>
                             <input placeholder='Please enter user emailid'></input>
