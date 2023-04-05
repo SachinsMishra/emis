@@ -11,13 +11,18 @@ export const HRMenu = () => {
         // window.push(MENU_ROUTE.ADD_EMPLOYEE)
         // navigategation.navigate(MENU_ROUTE.ADD_EMPLOYEE);
     }
+    const gotoEditEmployee = () => {
+        window.location.href=MENU_ROUTE.OTHER_DESIGN;
+        // window.push(MENU_ROUTE.ADD_EMPLOYEE)
+        // navigategation.navigate(MENU_ROUTE.ADD_EMPLOYEE);
+    }
 
     return (
         <div className="add-employee">
             <div onClick={gotoAddEmployee} className="icons">
                 <IoMdPersonAdd /> Add
             </div>
-            <div className="icons">
+            <div className="icons" onClick={gotoEditEmployee}>
                 <AiFillEdit /> Edit
             </div>
         </div>

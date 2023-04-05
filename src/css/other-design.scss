@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: space-evenly;
+
+    .question {
+        width: 80%;
+        text-align: justify;
+        padding: 0px 10px 0px 10px;
+    }
+
+    .radio-btn {
+        width: 20%;
+        display: flex;
+        align-items: center;
+
+
+        label {
+            display: flex;
+            cursor: pointer;
+            // width: 5%;
+            input {
+                font-size: 20px;
+                margin-top: 8px;
+                margin-right: 10px;
+            }
+        }
+    }
+}
