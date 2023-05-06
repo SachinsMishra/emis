@@ -40,7 +40,10 @@ export const OtherDesign = () => {
         show: false,
         condition: 'question-1',
         conditionval: 'Yes',
-        value: 'example'
+        options: [{
+            label: 'example',
+            value: 'value'
+        }]
     }, {
         question: 'Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.',
         field: 'question-4',
@@ -78,7 +81,10 @@ export const OtherDesign = () => {
         show: false,
         condition: 'question-5',
         conditionval: 'Yes',
-        value: '000-000-000'
+        options: [{
+            label: 'example',
+            value: 'question-5'
+        }]
     },
     {
         question: 'Turned Cell Phone',
@@ -118,7 +124,13 @@ export const OtherDesign = () => {
         show: false,
         condition: 'question-8',
         conditionval: 'Apple',
-        value: ''
+        options: [{
+            label: 'appleid',
+            value: 'appleid'
+        }, {
+            label: 'applepassword',
+            value: 'applepassword'
+        }]
     },
     {
         question: 'Android ID & Password',
@@ -127,7 +139,14 @@ export const OtherDesign = () => {
         show: false,
         condition: 'question-8',
         conditionval: 'Android',
-        value: ''
+        options: [{
+            label: 'androidid',
+            value: 'androidid'
+        }, {
+            label: 'androidpassword',
+            value: '',
+            placeholder:'Please enter the Android Password'
+        }]
     }
     ]);
     const informationChanged = (field, value) => {
@@ -171,8 +190,13 @@ export const OtherDesign = () => {
 
                                 {
                                     value.type == 'text' &&
-                                    <input type='text'
-                                        onChange={(event) => informationChanged(value.field, event.target.value)} ></input>
+                                    value.options.map(function (optVal) {
+                                        return (
+                                            <input type='text' key={value.field + '-' + optVal.value} value={optVal.value}
+                                                placeholder={optVal?.placeholder}
+                                                onChange={(event) => informationChanged(optVal.label, event.target.value)} ></input>
+                                        )
+                                    })
                                 }
                             </div>
                         </div>
