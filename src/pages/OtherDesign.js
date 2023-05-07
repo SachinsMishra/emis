@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { filter, findIndex } from 'lodash';
 import '../css/other-design.scss';
 export const OtherDesign = () => {
+    const [text] = useState();
+    const [text1] = useState();
     const [selection] = useState({});
     const [questions, setQuestions] = useState([{
         question: 'Question 1',
@@ -83,7 +85,7 @@ export const OtherDesign = () => {
         conditionval: 'Yes',
         options: [{
             label: 'example',
-            value: 'question-5'
+            value: text1
         }]
     },
     {
@@ -126,7 +128,7 @@ export const OtherDesign = () => {
         conditionval: 'Apple',
         options: [{
             label: 'appleid',
-            value: 'appleid'
+            value: text
         }, {
             label: 'applepassword',
             value: 'applepassword'
@@ -163,8 +165,14 @@ export const OtherDesign = () => {
             value: '',
             placeholder: 'Please enter example'
         }]
-    }
+    },
+
     ]);
+    const textInformationChanged = (event, mainVal, field, value) => {
+        // mainVal.options[0].value = event.target.value;
+        // console.log('text')
+
+    }
     const informationChanged = (field, value) => {
         hideChildElement(field);
         const question = filter(questions, { condition: field });
@@ -184,6 +192,14 @@ export const OtherDesign = () => {
         parent.map(a => a.show = false);
         hideChildElement(parent[0].field);
     }
+
+    const [inputValue, setInputValue] = useState('');
+    const [isSendHR, setSendHR] = useState(false);
+    const [isSendFinance, setSendFinance] = useState(false);
+
+    const handleChange = (event) => {
+        setInputValue(event.target.value);
+    };
 
     return (
         <div>
@@ -211,23 +227,50 @@ export const OtherDesign = () => {
                                         )
                                     })
                                 }
+                                {/* <input
+                                    type="text"
+                                    value={inputValue}
+                                    onChange={handleChange}
+                                /> */}
                                 <div className='input-field'>
                                     {
                                         value.type === 'text' &&
-                                        value.options.map(function (optVal) {
+                                        value.options.map(function (textVal) {
                                             return (
-                                                <input type='text' key={value.field + '-' + optVal.value} value={optVal.value}
-                                                    placeholder={optVal?.placeholder}
-                                                    onChange={(event) => informationChanged(optVal.label, event.target.value)} ></input>
+                                                <input type='text' key={value.field + '-' + textVal.value} value={textVal.value}
+                                                    placeholder={textVal?.placeholder}
+                                                    onChange={(event) => textInformationChanged(event, value, value.field)} ></input>
                                             )
                                         })
                                     }
                                 </div>
+
+
                             </div>
                         </div>
                     )
                 })
             }
+            <div>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        checked={isSendHR}
+                        onChange={() => setSendHR(!isSendHR)}
+                    />
+                    Send to HR
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        checked={isSendFinance}
+                        onChange={() => setSendFinance(!isSendFinance)}
+                    />
+                    Send to Fiance
+                </label>
+            </div>
         </div >
     );
 }
