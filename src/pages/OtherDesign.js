@@ -1,7 +1,21 @@
 import { useState } from 'react';
 import { filter, findIndex } from 'lodash';
 import '../css/other-design.scss';
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import { DateRangePicker } from 'react-date-range';
+import { addDays } from 'date-fns';
+import moment from 'moment';
+import { AiOutlineCalendar } from 'react-icons/ai';
+
 export const OtherDesign = () => {
+    const [state, setState] = useState([
+        {
+            startDate: new Date(),
+            endDate: addDays(new Date(), 7),
+            key: 'selection'
+        }
+    ]);
     const [text] = useState();
     const [text1] = useState();
     const [selection] = useState({});
@@ -62,10 +76,11 @@ export const OtherDesign = () => {
             value: 'NA'
         }]
     }, {
-        question: 'Turned in Cell Phone',
+        question: '5 - Turned in Cell Phone',
         field: 'question-5',
         show: true,
         type: 'radio',
+        selceted: 'Yes',
         options: [{
             label: 'YES',
             value: 'Yes',
@@ -108,7 +123,8 @@ export const OtherDesign = () => {
         question: 'if Yes Turned Cell Phone',
         field: 'question-8',
         type: 'radio',
-        show: false,
+        show: true,
+        selceted: 'Apple',
         condition: 'question-7',
         conditionval: 'Yes',
         options: [{
@@ -173,7 +189,8 @@ export const OtherDesign = () => {
         // console.log('text')
 
     }
-    const informationChanged = (field, value) => {
+    const informationChanged = (mainModel, field, value) => {
+        mainModel.selceted = value;
         hideChildElement(field);
         const question = filter(questions, { condition: field });
         question.map(a => a.show = false);
@@ -201,8 +218,46 @@ export const OtherDesign = () => {
         setInputValue(event.target.value);
     };
 
+    const handleSelect = (date) => {
+        setState([date.selection]);
+        // console.log(date)
+        // setShowDatePicker(!showDatePicker)
+        console.log(date, state); // native Date object
+    }
+    const [showDatePicker, setShowDatePicker] = useState(false);
+
+    const handleDatePickerClick = () => {
+        setShowDatePicker(!showDatePicker);
+    }
+    const handleApplyClick = () => {
+        setShowDatePicker(false);
+        // Perform any desired action with the selectedRange values
+    };
     return (
         <div>
+            <div className='calendar-input' onClick={handleDatePickerClick}>
+                <input disabled value={`${moment(state[0].startDate).format('YYYY-MM-DD')} - ${moment(state[0].endDate).format('YYYY-MM-DD')}`} />
+                <AiOutlineCalendar className='calendar-icon' />
+            </div>
+            {showDatePicker &&
+                <div className='drp-wrapper'>
+                    <DateRangePicker
+                        className='custom-date-range-picker'
+                        onChange={item => handleSelect(item)}
+                        showSelectionPreview={false}
+                        moveRangeOnFirstSelection={false}
+                        months={1}
+                        minDate={new Date('01-01-1900')}
+                        maxDate={new Date()}
+                        ranges={state}
+                        direction="vertical"
+                        scroll={{ enabled: true }}
+                    // onRangeFocusChange={(item) =>console.log(item)}
+                    // direction="horizontal"
+                    />
+                    <button className='apply-cls' onClick={handleApplyClick}>Apply</button>
+                </div>
+            }
             {
                 questions.map(function (value) {
                     return (
@@ -217,8 +272,10 @@ export const OtherDesign = () => {
                                     value.options.map(function (optVal) {
                                         return (
                                             <label key={value.field + '-' + optVal.value} >
-                                                <input onClick={() => informationChanged
-                                                    (value.field, optVal.value)}
+                                                <input
+                                                    checked={value.selceted === optVal.value}
+                                                    onChange={() => informationChanged
+                                                        (value, value.field, optVal.value)}
                                                     type="radio"
                                                     value={optVal.value}
                                                     name={'rad' + value.field}
@@ -268,7 +325,7 @@ export const OtherDesign = () => {
                         checked={isSendFinance}
                         onChange={() => setSendFinance(!isSendFinance)}
                     />
-                    Send to Fiance
+                    Send to Finance
                 </label>
             </div>
         </div >

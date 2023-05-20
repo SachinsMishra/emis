@@ -11,3 +11,58 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.calendar-icon {
+  height: 35px;
+  font-size: 23px;
+  /* left: 47px; */
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+  font-weight: 600;
+}
+
+.calendar-input {
+  cursor: pointer;
+  display: flex;
+  position: relative;
+}
+
+.custom-date-range-picker {
+  justify-content: center;
+  position: 1000;
+  /* position: absolute; */
+  /* border: 1px solid #e7dcdc; */
+  border-radius: 5px;
+  right: 0;
+  padding: 5px;
+  background: #e5f5f0;
+  /* padding-bottom: 40px; */
+}
+
+.drp-wrapper {
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #eff2f7;
+  border: 1px solid #e7d0d0;
+  border-radius: 5px;
+}
+
+.drp-wrapper .apply-cls {
+  padding: 5px;
+  width: 70px;
+  margin: 5px;
+  background: #3d91ff;
+  color: #fff;
+  border: 0px;
+  border-radius: 5px;
+  height: 31px;
+  cursor: pointer;
+}
+
+.rdrDefinedRangesWrapper {
+  display: none;
+}
