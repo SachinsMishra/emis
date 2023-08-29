@@ -23,6 +23,8 @@ const IntakeForm = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [selectedCountries, setSelectedCountries] = useState([]);
+    const [textFieldValue, setTextFieldValue] = useState('');
+    const [textFieldError, setTextFieldError] = useState('');
 
     const handleCountryChange = (event) => {
         setSelectedCountries(event.target.value);
@@ -34,6 +36,7 @@ const IntakeForm = () => {
         console.log('First Name:', firstName);
         console.log('Last Name:', lastName);
         console.log('Selected Countries:', selectedCountries);
+        console.log('Boolean Phone Number:', Boolean(textFieldError));
     };
 
     return (
@@ -55,6 +58,33 @@ const IntakeForm = () => {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     margin="normal"
+                />
+                <TextField
+                    label="Phone Number"
+                    variant="outlined"
+                    type='number'
+                    inputProps={{
+                        minLength: 10, // Set the minimum length to 10 characters
+                        maxLength: 10, // Set the maximum length to 10 characters
+                    }}
+                    value={textFieldValue}
+                    onChange={(e) => {
+                        const value = e.target.value;
+                        setTextFieldValue(value);
+                        if (value.length > 10) {
+                            setTextFieldValue(value.substring(0, 10));
+                            return
+                        }
+
+                        // Check if the input exceeds 10 characters
+                        if (value.length > 10 || value.length < 10) {
+                            setTextFieldError('Phone Number Should of 10 Digits');
+                        } else {
+                            setTextFieldError('');
+                        }
+                    }}
+                    error={Boolean(textFieldError)}
+                    helperText={textFieldError}
                 />
                 <FormControl margin="normal">
                     <InputLabel>Country</InputLabel>
@@ -79,7 +109,7 @@ const IntakeForm = () => {
                         ))}
                     </Select>
                 </FormControl>
-                <Button type="submit" variant="contained" color="primary" >
+                <Button type="submit" variant="contained" color="primary" onClick={handleSubmit} >
                     Submit
                 </Button>
             </div>
