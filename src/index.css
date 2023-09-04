@@ -73,3 +73,27 @@ code {
   width: 30%;
   margin: 0 auto;
 }
+
+.tabs {
+  width: 40%;
+  display: flex;
+  margin: 0 auto;
+}
+
+.tab {
+  line-height: 2rem;
+  text-align: center;
+  height: 42px;
+  width: 200px;
+  background: #d0dd68;
+  /* border: 1px solid black;; */
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.active {
+  background: white;
+  border: 1px solid #dbcccc;
+  font-weight: 500;
+  height: 40px !important;
+}
